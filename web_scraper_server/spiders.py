@@ -1,5 +1,7 @@
-import scrapy
+from typing import Dict, Iterator
+
 import fnc
+import scrapy
 
 
 class ApartmentsSpider(scrapy.Spider):
@@ -9,9 +11,13 @@ class ApartmentsSpider(scrapy.Spider):
         for page in range(1, 2)
     ]
 
-    def parse(self, response, **kwargs):
-        yield from fnc.compose(
-            (fnc.get, "_embedded.estates"),
-            (fnc.map, ('locality', '_links.images[0].href')),
-            (fnc.map, lambda x: {'title': x[0], 'image': x[1]}),
-        )(response.json())
+    def parse(self, response, **kwargs) -> Iterator[Dict[str, str]]:
+        yield from parse_data(response.json())
+
+
+def parse_data(data: dict) -> Iterator[Dict[str, str]]:
+    yield from fnc.compose(
+        (fnc.get, "_embedded.estates"),
+        (fnc.map, ("locality", "_links.images[0].href")),
+        (fnc.map, lambda x: {"title": x[0], "image": x[1]}),
+    )(data)
