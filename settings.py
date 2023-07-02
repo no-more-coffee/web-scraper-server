@@ -19,3 +19,5 @@ PASSWORD = getenv("POSTGRES_PASSWORD")
 HOST = getenv("DB_HOST")
 PORT = 5432
 DATABASE = getenv("POSTGRES_DB")
+MAX_SCRAPE_ITEMS = int(getenv("MAX_SCRAPE_ITEMS", "0"))
+ITEMS_PER_PAGE = int(getenv("ITEMS_PER_PAGE", "0"))
