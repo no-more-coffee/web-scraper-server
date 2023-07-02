@@ -10,7 +10,6 @@ packages = [{include = "web_scraper_server"}]
 python = "^3.11"
 fastapi = "^0.99"
 uvicorn = {extras = ["standard"], version = "^0.22"}
-supervisor = "^4.2"
 scrapy = "^2.9"
 fnc = "^0.5"
 sqlalchemy = "^2.0"
