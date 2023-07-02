@@ -1,6 +1,6 @@
-# python-websocket-server
+# web-scraper-server
 
-Simple WebSocket server using "websockets" package.
+Simple web scraper server.
 
 Fulfills requirements:
 
